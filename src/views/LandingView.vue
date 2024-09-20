@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="md:w-1/2 h-1/2 md:h-full">
+    <div class="md:w-1/2 flex-grow md:h-full">
       <img
         src="/src/assets/profile-pic.jpeg"
         alt="Adrian Kyzer"
