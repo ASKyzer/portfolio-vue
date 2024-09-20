@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navigation-item {
+  @apply font-light cursor-pointer whitespace-nowrap leading-none tracking-tight text-[4.5rem] hover:text-[#949494];
+}
+
+.main-header {
+  @apply font-light leading-none tracking-tight text-[4.5rem];
+}
+
+.section-title {
+  @apply uppercase text-[#949494] text-[1.25rem] font-light;
+}
+
+.section-paragraph {
+  @apply text-[1rem] tracking-[1.5px] font-light;
+}
