@@ -28,6 +28,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    clearInput: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -42,7 +46,20 @@ export default {
       return `input-${getCurrentInstance()?.uid}`;
     }
   },
+  watch: {
+    clearInput(newValue) {
+      if (newValue) {
+        this.inputValue = '';
+        this.$emit('update:modelValue', '');
+      }
+    }
+  },
   methods: {
+    updateValue(event: any) {
+      const { value } = event.target;
+      
+      this.$emit('update:modelValue', value);
+    },
     validate() {
       if (this.required && !this.inputValue) {
         this.error = 'This field is required.';
@@ -86,6 +103,7 @@ export default {
       :disabled="disabled"
       v-bind="validation"
       v-model="inputValue"
+      @input="updateValue($event)"
       @focus="isFocused = true"
       @blur="isFocused = false; validate()"
       :class="['w-full py-2 px-2 border-b bg-transparent focus:outline-none focus:border-secondary input-text', { 'border-error' : error, 'border-tertiary': !error }]"
@@ -98,6 +116,7 @@ export default {
       :rows="rows"
       v-bind="validation"
       v-model="inputValue"
+      @input="updateValue($event)"
       @focus="isFocused = true"
       @blur="isFocused = false; validate()"
       class="w-full py-2 px-2 border-b border-tertiary bg-transparent focus:outline-none focus:border-secondary input-text"

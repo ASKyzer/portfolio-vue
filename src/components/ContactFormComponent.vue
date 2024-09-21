@@ -7,21 +7,27 @@ export default {
   },
   data() {
     return {
-      form: {
+      form: this.getInitialFormState(),
+      errors: {},
+      clearInput: false
+    };
+  },
+  methods: {
+    getInitialFormState() {
+      return {
         firstName: '',
         lastName: '',
         email: '',
         subject: '',
         message: '',
         botField: '' // Honeypot field
-      },
-      errors: {}
-    };
-  },
-  methods: {
+      };
+    },
     validateForm() {
       this.errors = {};
       let isValid = true;
+
+      console.log('this.form', this.form);  
 
       if (!this.form.firstName) {
         this.errors.firstName = 'First Name is required';
@@ -51,7 +57,7 @@ export default {
         // If the honeypot field is filled out, treat it as spam and do nothing
         return;
       }
-      
+
       if (this.validateForm()) {
         // Submit the form to Netlify
         const form = this.$el.querySelector('form');
@@ -62,13 +68,21 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()
         })
-          .then(() => alert('Form successfully submitted'))
+        .then(() => {
+            alert('Form successfully submitted');
+            // Reset form data after successful submission
+            this.form = this.getInitialFormState();
+             // Toggle clearInput to true to clear the input fields
+             this.clearInput = true;
+            // Reset clearInput to false after a short delay
+            setTimeout(() => {
+              this.clearInput = false;
+            }, 0);
+
+          })          
           .catch((error) => alert(error));
       } else {
-        // Trigger error status on input fields
-        Object.keys(this.errors).forEach((key) => {
-          this.$refs[key].validate();
-        });
+        alert('The form is not valid. Please check the fields and try again.');
       }
     }
   }
@@ -94,6 +108,7 @@ export default {
       </div>      <div class="md:flex md:space-x-4">
         <div class="md:flex-1">
           <InputField
+                      :clearInput="clearInput"
             label="First Name"
             v-model="form.firstName"
             :validation="{ required: true }"
@@ -103,6 +118,7 @@ export default {
         </div>
         <div class="md:flex-1">
           <InputField
+                      :clearInput="clearInput"
             label="Last Name"
             v-model="form.lastName"
             :validation="{ required: true }"
@@ -113,6 +129,7 @@ export default {
       </div>
       <div class="mb-6">
         <InputField
+                    :clearInput="clearInput"
           type="email"
           label="Email"
           v-model="form.email"
@@ -123,6 +140,7 @@ export default {
       </div>
       <div class="mb-6">
         <InputField
+                    :clearInput="clearInput"
           label="Subject"
           v-model="form.subject"
           :validation="{ required: true }"
@@ -132,6 +150,7 @@ export default {
       </div>
       <div class="mb-6">
         <InputField
+                    :clearInput="clearInput"
           type="textarea"
           label="Message"
           v-model="form.message"
