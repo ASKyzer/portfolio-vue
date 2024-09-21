@@ -86,11 +86,11 @@ export default defineComponent({
 }
 
 .router-link-active {
-  color: crimson;
+  color: var(--color-primary);
 }
 
 .router-link-active:hover {
-  color: crimson;
+  color: var(--color-primary);
   scale: 1;
 }
 

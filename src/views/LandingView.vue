@@ -12,7 +12,7 @@
 
         <router-link to="/content/about">
           <button
-            class="text-[crimson] py-2 px-8 hover:text-[#949494] transition duration-300 mb-8 text-[1.5rem] tracking-[1.5px] font-light"
+            class="text-primary py-2 px-8 hover:text-tertiary transition duration-300 mb-8 text-[1.5rem] tracking-[1.5px] font-light"
           >
             Let’s work together!
           </button>
@@ -46,18 +46,5 @@ h1 {
 
 .title-name {
   margin-top: 0 !important;
-}
-
-p {
-  letter-spacing: 2px;
-  line-height: 0.5;
-}
-
-p.developer {
-  margin-top: 48px !important;
-}
-
-p.lead {
-  margin-bottom: 40px !important;
 }
 </style>
