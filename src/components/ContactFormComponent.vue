@@ -98,6 +98,7 @@ export default {
       data-netlify="true"
       netlify-honeypot="bot-field"
       class="mx-auto"
+      netlify
     >
     <input type="hidden" name="form-name" value="contact" />
       <!-- Honeypot field to prevent spam -->
