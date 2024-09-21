@@ -1,9 +1,21 @@
 @import './base.css';
 
 body {
-  background-color: #000;
+  background-color: black;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 400;
+}
+
+:root {
+  --color-background: #fcfcfc;
+  --color-error: #FF0000;
+  --color-primary: #C21140;
+  --color-secondary: #00A3E0;
+  --color-tertiary: #949494;
+  --color-tertiary-light: #b3b3b3;
+  --color-tertiary-lighter: #d1d1d1;
+  --color-tertiary-dark: #767676;
+  --color-tertiary-darker: #585858;
 }

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .navigation-item {
-  @apply font-light cursor-pointer whitespace-nowrap leading-none tracking-tight text-[4.5rem] hover:text-[#949494];
+  @apply font-light cursor-pointer whitespace-nowrap leading-none tracking-tight text-[4.5rem] hover:text-tertiary;
 }
 
 .main-header {
@@ -11,9 +11,25 @@
 }
 
 .section-title {
-  @apply uppercase text-[#949494] text-[1.25rem] font-light;
+  @apply uppercase text-tertiary text-[1.25rem] font-light;
 }
 
 .section-paragraph {
   @apply text-[1rem] tracking-[1.5px] font-light;
+}
+
+.input-label {
+  @apply text-[0.8rem] font-light tracking-[1.2px] ;
+}
+
+.input-text {
+  @apply text-[1rem] font-normal tracking-[1.2x];
+}
+
+.input-placeholder {
+  @apply text-[1rem] tracking-[1.5px] font-light text-tertiary;
+}
+
+.error-message {
+  @apply text-error font-light tracking-[1.2px] text-xs italic;
 }
