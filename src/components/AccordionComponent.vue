@@ -45,7 +45,7 @@ export default defineComponent({
           <h2>
             {{ item.title }}
           </h2>
-          <div>{{ activeIndex === index ? '-' : '+' }}</div>
+          <div class="text-primary">{{ activeIndex === index ? '-' : '+' }}</div>
         </div>
       </div>
       <div
