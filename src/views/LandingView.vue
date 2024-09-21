@@ -47,4 +47,17 @@ h1 {
 .title-name {
   margin-top: 0 !important;
 }
+
+p {
+  letter-spacing: 2px;
+  line-height: 0.5;
+}
+
+p.developer {
+  margin-top: 48px !important;
+}
+
+p.lead {
+  margin-bottom: 40px !important;
+}
 </style>
