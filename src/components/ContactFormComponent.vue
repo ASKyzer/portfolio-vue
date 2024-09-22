@@ -1,3 +1,4 @@
+<!-- eslint-disable no-unreachable -->
 <script>
 import InputField from './InputField.vue';
 
@@ -69,6 +70,7 @@ export default {
         .then((res) => {
           if (res.status !== 200) { 
             throw new Error('Form submission failed'); // Create custom modal to display error message
+            return;
           }
 
           // if (res.status === 200) {
