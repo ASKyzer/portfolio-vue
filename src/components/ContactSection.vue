@@ -1,6 +1,6 @@
 <template>
   <div class="p-8 w-full">
-    <h1 class="main-header mb-12">Get In Touch</h1>
+    <h1 class="main-header">Get In Touch</h1>
     <div>
       <p class="section-title mb-6">
         Message me

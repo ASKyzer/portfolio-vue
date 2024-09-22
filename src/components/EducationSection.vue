@@ -27,7 +27,7 @@ export default defineComponent({
 
 <template>
   <div class="p-8 w-full">
-    <h2 class="main-header mb-12">Where I Studied</h2>
+    <h2 class="main-header">Where I Studied</h2>
     <div v-for="(item, index) of educationItems" :key="index" class="flex flex-col space-y-4 mb-16">
       <h2 class="section-title">
         {{ item.title }}

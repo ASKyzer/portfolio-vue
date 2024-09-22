@@ -51,7 +51,7 @@ export default defineComponent({
 
 <template>
   <div class="p-8 w-full">
-    <h2 class="main-header mb-12">What I Do</h2>
+    <h2 class="main-header">What I Do</h2>
     <div class="flex flex-col space-y-4 mb-16">
       <AccordionComponent :items="accordionItems" backgroundColor="transparent" :flushed="true" />
     </div>
