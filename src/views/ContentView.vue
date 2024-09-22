@@ -30,7 +30,7 @@ export default defineComponent({
     </div>
 
     <div
-      class="w-full flex-grow bg-background flex items-start lg:items-center justify-center lg:just px-2 md:px-8 py-8 lg:px-24 xl:px-48"
+      class="w-full flex-grow bg-background flex items-start lg:items-center justify-center lg:just px-1 md:px-8 py-4 md:py-8 lg:px-24 xl:px-48"
     >
       <router-view></router-view>
     </div>

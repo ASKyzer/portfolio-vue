@@ -7,7 +7,7 @@
 }
 
 .main-header {
-  @apply font-light leading-none tracking-tight text-[4.5rem];
+  @apply font-light leading-none tracking-tight text-[3rem] md:text-[4.5rem] mb-8 md:mb-12;
 }
 
 .section-title {

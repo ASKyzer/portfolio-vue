@@ -1,9 +1,9 @@
 <template>
   <div class="p-8 w-full">
-    <h1 class="main-header mb-12">Get In Touch</h1>
+    <h1 class="main-header">Get In Touch</h1>
     <div>
       <p class="section-title mb-6">
-        Message me.
+        Message me
       </p>
       <ContactFormComponent />
     </div>
@@ -36,22 +36,5 @@ export default {
   components: {
     ContactFormComponent
   },
-  data() {
-    return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      subject: '',
-      message: '',
-      botField: '',
-      isFormInvalid: false,
-      error: ''
-    }
-  },
 }
 </script>
-
-<style scoped>
-/* Add any additional styles if needed */
-</style>

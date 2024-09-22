@@ -106,7 +106,8 @@ export default {
           Don’t fill this out if you're human: 
           <input name="bot-field" v-model="form.botField" />
         </label>
-      </div>      <div class="md:flex md:space-x-4">
+      </div>      
+      <div class="md:flex md:space-x-4">
         <div class="md:flex-1">
           <InputField
             :clearInput="clearInput"
@@ -162,7 +163,7 @@ export default {
       </div>
       <button
           type="submit"
-          class="bg-primary filter hover:brightness-90 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+          class="text-primary py-2 px-8 transition duration-300 mb-8 text-[1.5rem] tracking-[1.5px] font-light  bg-primary filter hover:brightness-90 text-white rounded focus:outline-none focus:shadow-outline"
         >
           Submit
         </button>    
