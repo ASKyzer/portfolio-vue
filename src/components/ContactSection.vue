@@ -36,22 +36,5 @@ export default {
   components: {
     ContactFormComponent
   },
-  data() {
-    return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      subject: '',
-      message: '',
-      botField: '',
-      isFormInvalid: false,
-      error: ''
-    }
-  },
 }
 </script>
-
-<style scoped>
-/* Add any additional styles if needed */
-</style>
