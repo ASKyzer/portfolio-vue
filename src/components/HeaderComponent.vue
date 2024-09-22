@@ -25,19 +25,13 @@ export default defineComponent({
 <template>
   <div class="h-0">
     <!-- Button to toggle menu on mobile -->
-    <button
-      @click="toggleMenu"
-      class="lg:hidden w-full h-20 bg-black fixed z-50 top-0 left-0 font-light cursor-pointer whitespace-nowrap leading-none tracking-tight text-[4.5rem]"
+    <div
+      class="lg:hidden w-full h-20 bg-black fixed z-50 top-0 left-0 font-light whitespace-nowrap leading-none tracking-tight text-[4.5rem]"
       :class="[isMenuOpen ? '' : '']"
     >
-      <span
-        :class="[
-          'font-light uppercase text-[3.5rem] flex',
-          isMenuOpen ? 'pr-4 justify-end' : 'pl-2'
-        ]"
-        >{{ isMenuOpen ? 'X' : 'Menu' }}</span
-      >
-    </button>
+      <span v-if="isMenuOpen"  @click="toggleMenu" class="pr-4 float-end cursor-pointer 'font-light uppercase text-[3rem]' w-auto">X</span>
+      <span v-else @click="toggleMenu" class="pl-2 'font-light uppercase cursor-pointer text-[3.5rem] w-auto'">Menu</span>
+  </div>
 
     <!-- Navigation menu -->
     <nav
