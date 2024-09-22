@@ -27,8 +27,6 @@ export default {
       this.errors = {};
       let isValid = true;
 
-      console.log('this.form', this.form);  
-
       if (!this.form.firstName) {
         this.errors.firstName = 'First Name is required';
         isValid = false;
@@ -69,7 +67,6 @@ export default {
           body: new URLSearchParams(formData).toString()
         })
         .then((res) => {
-          console.log('res', res);
           if (res.status !== 200) { 
             throw new Error('Form submission failed'); // Create custom modal to display error message
           }
@@ -97,9 +94,12 @@ export default {
   <div class="w-full">
     <form
       @submit.prevent="handleSubmit"
-     
+      method="POST"
+      data-netlify="true"
+      name="contact"
       class="mx-auto"
     >
+      <input type="hidden" name="form-name" value="contact">
       <!-- Honeypot field to prevent spam -->
       <div style="display:none;">
         <label>
