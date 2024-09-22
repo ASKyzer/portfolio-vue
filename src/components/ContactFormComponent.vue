@@ -68,7 +68,13 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()
         })
-        .then(() => {
+        .then((res) => {
+          console.log('Form submitted', res);
+          if (res.status !== 200) { 
+            throw new Error('Form submission failed');
+          }
+
+          if (res.status === 200) {
             alert('Form successfully submitted');
             // Reset form data after successful submission
             this.form = this.getInitialFormState();
@@ -78,7 +84,7 @@ export default {
             setTimeout(() => {
               this.clearInput = false;
             }, 0);
-
+          }
           })          
           .catch((error) => alert(error));
       } else {
@@ -98,7 +104,6 @@ export default {
       data-netlify="true"
       netlify-honeypot="bot-field"
       class="mx-auto"
-      netlify
     >
     <input type="hidden" name="form-name" value="contact" />
       <!-- Honeypot field to prevent spam -->
