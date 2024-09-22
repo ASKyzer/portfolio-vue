@@ -13,29 +13,34 @@ const router = createRouter({
     { path: '/', component: LandingView },
     {
       path: '/content',
+      
       component: ContentView,
       children: [
         {
-          path: '/content/about',
+          path: 'about',
           component: AboutSection
         },
         {
-          path: '/content/experience',
+          path: 'experience',
           component: ExperienceSection
         },
         {
-          path: '/content/education',
+          path: 'education',
           component: EducationSection
         },
         {
-          path: '/content/contact',
+          path: 'contact',
           component: ContactSection
         },
         {
-          path: '/content/test',
+          path: 'test',
           component: FormTestComponent
-        }
-      ]
+        },
+      ],
+    },
+    {
+      path: '/:catchAll(.*)',
+      redirect: '/'
     }
   ]
 })
