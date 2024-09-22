@@ -3,7 +3,7 @@
     <h1 class="main-header mb-12">Get In Touch</h1>
     <div>
       <p class="section-title mb-6">
-        Message me.
+        Message me
       </p>
       <ContactFormComponent />
     </div>

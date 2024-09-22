@@ -91,6 +91,7 @@ export default defineComponent({
 
 .router-link-active:hover {
   color: var(--color-primary);
+  cursor: default;
   scale: 1;
 }
 
