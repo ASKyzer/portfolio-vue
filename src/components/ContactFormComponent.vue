@@ -111,7 +111,8 @@ export default {
           Don’t fill this out if you're human: 
           <input name="bot-field" v-model="form.botField" />
         </label>
-      </div>      <div class="md:flex md:space-x-4">
+      </div>      
+      <div class="md:flex md:space-x-4">
         <div class="md:flex-1">
           <InputField
             :clearInput="clearInput"
