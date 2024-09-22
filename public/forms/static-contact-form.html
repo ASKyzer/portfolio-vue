@@ -1,18 +1,18 @@
 <html></html>
-<body>
-  <form hidden name="contact" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="contact">
-    <div style="display:none;">
-      <label>
-        Don’t fill this out if you're human: 
-        <input name="bot-field" v-model="form.botField" />
-      </label>
-    </div>
-    <input type="text" name="firstName" required></label>
-    <input type="text" name="lastName" required></label>
-    <input type="email" name="email" required></label>
-    <input type="text" name="subject" required></label>
-    <textarea name="message" required></textarea>
-  </form>
-</body>
+  <body>
+    <form type="hidden" name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
+      <div style="display:none;">
+        <label>
+          Don’t fill this out if you're human: 
+          <input  name="bot-field" v-model="" />
+        </label>
+      </div>
+      <input type="text" name="firstName" required></label>
+      <input type="text" name="lastName" required></label>
+      <input type="email" name="email" required></label>
+      <input type="text" name="subject" required></label>
+      <textarea name="message" required></textarea>
+    </form>
+  </body>
 </html>
