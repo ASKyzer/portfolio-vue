@@ -68,17 +68,20 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()
         })
-        .then(() => {
-            alert('Form successfully submitted');
-            // Reset form data after successful submission
+        .then((res) => {
+          if (res.status !== 200) { 
+            throw new Error('Form submission failed'); // Create custom modal to display error message
+          }
+
+          if (res.status === 200) {
+            alert('Form successfully submitted'); // Create custom modal to display success message
             this.form = this.getInitialFormState();
-             // Toggle clearInput to true to clear the input fields
-             this.clearInput = true;
-            // Reset clearInput to false after a short delay
+            this.clearInput = true;
+            
             setTimeout(() => {
               this.clearInput = false;
             }, 0);
-
+          }
           })          
           .catch((error) => alert(error));
       } else {
@@ -98,67 +101,67 @@ export default {
       data-netlify="true"
       netlify-honeypot="bot-field"
       class="mx-auto"
-      netlify
     >
     <input type="hidden" name="form-name" value="contact" />
       <!-- Honeypot field to prevent spam -->
       <div style="display:none;">
         <label>
-          Don’t fill this out if you're human: <input name="bot-field" v-model="form.botField" />
+          Don’t fill this out if you're human: 
+          <input name="bot-field" v-model="form.botField" />
         </label>
       </div>      <div class="md:flex md:space-x-4">
         <div class="md:flex-1">
           <InputField
-                      :clearInput="clearInput"
+            :clearInput="clearInput"
             label="First Name"
             v-model="form.firstName"
             :validation="{ required: true }"
             required
-            name="first-name"
+            name="firstName"
           />
         </div>
         <div class="md:flex-1">
           <InputField
-                      :clearInput="clearInput"
+            :clearInput="clearInput"
             label="Last Name"
             v-model="form.lastName"
             :validation="{ required: true }"
             required
-            name="last-name"
+            name="lastName"
           />
         </div>
       </div>
       <div class="mb-6">
         <InputField
-                    :clearInput="clearInput"
+          :clearInput="clearInput"
           type="email"
           label="Email"
           v-model="form.email"
           :validation="{ required: true, pattern: '.+@.+\\..+' }"
           required
           name="email"
-        />
+          />
       </div>
       <div class="mb-6">
         <InputField
-                    :clearInput="clearInput"
+          :clearInput="clearInput"
           label="Subject"
           v-model="form.subject"
           :validation="{ required: true }"
           required
           name="subject"
-        />
+          />
       </div>
       <div class="mb-6">
         <InputField
-                    :clearInput="clearInput"
+           :clearInput="clearInput"
           type="textarea"
           label="Message"
           v-model="form.message"
           :validation="{ required: true }"
           required
           name="message"
-        />
+          />
       </div>
       <button
           type="submit"

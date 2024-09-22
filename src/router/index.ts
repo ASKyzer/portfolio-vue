@@ -5,6 +5,7 @@ import AboutSection from '../components/AboutSection.vue'
 import ExperienceSection from '@/components/ExperienceSection.vue'
 import EducationSection from '@/components/EducationSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
+import FormTestComponent from '@/components/FormTestComponent.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,6 +30,10 @@ const router = createRouter({
         {
           path: '/content/contact',
           component: ContactSection
+        },
+        {
+          path: '/content/test',
+          component: FormTestComponent
         }
       ]
     }
