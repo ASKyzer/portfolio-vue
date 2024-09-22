@@ -96,6 +96,7 @@ export default {
   <div class="w-full">
     <form
       @submit.prevent="handleSubmit"
+      action="/?netlify"
       name="contact"
       method="POST"
       data-netlify="true"
