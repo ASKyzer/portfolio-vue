@@ -67,9 +67,9 @@ export default {
           body: new URLSearchParams(formData).toString()
         })
         .then((res) => {
-          // if (res.status !== 200) { 
-          //   throw new Error('Form submission failed'); // Create custom modal to display error message
-          // }
+          if (res.status !== 200) { 
+            throw new Error('Form submission failed'); // Create custom modal to display error message
+          }
 
           // if (res.status === 200) {
           //   alert('Form successfully submitted'); // Create custom modal to display success message
@@ -80,6 +80,13 @@ export default {
           //     this.clearInput = false;
           //   }, 0);
           // }
+          form.submit();
+          this.form = this.getInitialFormState();
+            this.clearInput = true;
+            
+            setTimeout(() => {
+              this.clearInput = false;
+            }, 0);
           })          
           .catch((error) => alert(error));
       } else {
