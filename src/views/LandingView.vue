@@ -12,9 +12,9 @@
 
         <router-link to="/content/about">
           <button
-            class="text-primary py-2 px-8 hover:text-tertiary transition duration-300 mb-8 text-[1.5rem] tracking-[1.5px] font-light"
+            class="text-primary py-2 px-8 transition duration-300 mb-8 text-[1.5rem] tracking-[1.5px] font-light  bg-primary filter hover:brightness-90 text-white rounded focus:outline-none focus:shadow-outline"
           >
-            Let’s work together!
+            Learn more about me!
           </button>
         </router-link>
       </div>
