@@ -69,6 +69,7 @@ export default {
           body: new URLSearchParams(formData).toString()
         })
         .then((res) => {
+          console.log('res', res);
           if (res.status !== 200) { 
             throw new Error('Form submission failed'); // Create custom modal to display error message
           }
