@@ -97,14 +97,9 @@ export default {
   <div class="w-full">
     <form
       @submit.prevent="handleSubmit"
-      action="/?netlify"
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
+     
       class="mx-auto"
     >
-    <input type="hidden" name="form-name" value="contact" />
       <!-- Honeypot field to prevent spam -->
       <div style="display:none;">
         <label>
