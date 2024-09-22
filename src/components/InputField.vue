@@ -13,6 +13,10 @@ export default {
       type: String,
       default: ''
     },
+    name: {
+      type: String,
+      default: ''
+    },
     rows: {
       type: Number,
       default: 4
@@ -101,6 +105,7 @@ export default {
       :type="type"
       :required="required"
       :disabled="disabled"
+      :name="name"
       v-bind="validation"
       v-model="inputValue"
       @input="updateValue($event)"
@@ -114,6 +119,7 @@ export default {
       :required="required"
       :disabled="disabled"
       :rows="rows"
+      :name="name"
       v-bind="validation"
       v-model="inputValue"
       @input="updateValue($event)"
