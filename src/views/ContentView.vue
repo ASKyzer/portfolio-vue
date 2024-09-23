@@ -22,19 +22,52 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex flex-col lg:flex-row h-svh">
-    <div
-      class="w-full h-vls lg:h-auto lg:w-[700px] bg-black text-white lg:flex items-center justify-center p-8"
-    >
+  <div class="min-h-screen">
+    <div class="navigation-panel">
       <HeaderComponent />
     </div>
 
-    <div
-      class="w-full flex-grow bg-background flex items-start lg:items-center justify-center lg:just px-1 md:px-8 py-4 md:py-8 lg:px-24 xl:px-48"
-    >
+    <div class="content-panel">
       <router-view></router-view>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.navigation-panel {
+  height: 100%;
+}
+
+.content-panel {
+  width: auto;
+  min-height: calc(100vh - 80px);
+  background-color: var(--color-background);
+  padding: 0.75rem;
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation-panel {
+    width: 420px;
+    background-color: transparent;
+  }
+
+  .content-panel {
+    width: auto;
+    height: 100vh;
+    background-color: var(--color-background);
+    padding: 4rem;
+    overflow-y: auto;
+    margin-left: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .content-panel {
+    padding: 8rem;
+  }
+}
+</style>

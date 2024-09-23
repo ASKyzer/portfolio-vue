@@ -40,4 +40,10 @@ const router = createRouter({
   ]
 });
 
+// Global navigation guard to scroll to the top on each route change
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0); // Scrolls to the top on each navigation
+  next();
+});
+
 export default router;
