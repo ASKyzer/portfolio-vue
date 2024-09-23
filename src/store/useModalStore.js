@@ -1,4 +1,3 @@
-// src/store/useModalStore.js
 import { reactive } from 'vue';
 
 const state = reactive({

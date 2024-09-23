@@ -5,9 +5,6 @@ import ButtonComponent from '@/components/ButtonComponent.vue';
 export default defineComponent({
   components: {
     ButtonComponent
-  },
-  setup() {
-    return ButtonComponent;
   }
 });
 </script>

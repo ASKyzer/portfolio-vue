@@ -21,7 +21,9 @@ export default defineComponent({
     }
   },
   setup(props) {
-    return props;
+    return {
+      props
+    };
   }
 });
 </script>

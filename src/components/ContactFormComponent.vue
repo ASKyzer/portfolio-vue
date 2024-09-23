@@ -1,5 +1,4 @@
-<!-- eslint-disable no-unreachable -->
-<script>
+<script lang="ts">
 import InputField from './InputField.vue';
 import { useModalStore } from '../store/useModalStore';
 import ButtonComponent from './ButtonComponent.vue';
@@ -32,23 +31,18 @@ export default {
       let isValid = true;
 
       if (!this.form.firstName) {
-        this.errors.firstName = 'First Name is required';
         isValid = false;
       }
       if (!this.form.lastName) {
-        this.errors.lastName = 'Last Name is required';
         isValid = false;
       }
       if (!this.form.email || !/.+@.+\..+/.test(this.form.email)) {
-        this.errors.email = 'Valid Email is required';
         isValid = false;
       }
       if (!this.form.subject) {
-        this.errors.subject = 'Subject is required';
         isValid = false;
       }
       if (!this.form.message) {
-        this.errors.message = 'Message is required';
         isValid = false;
       }
 
@@ -97,9 +91,11 @@ export default {
           })
           .catch((error) => alert(error));
       } else {
+        const { openModal } = useModalStore();
+
         openModal({
           message: 'The form is not valid. Please check the fields and try again.',
-          title: 'Something wwent wrong!',
+          title: 'Oops!',
           buttonText: 'Close'
         });
       }

@@ -1,3 +1,13 @@
+<script lang="ts">
+import ContactFormComponent from './ContactFormComponent.vue';
+
+export default {
+  components: {
+    ContactFormComponent
+  }
+};
+</script>
+
 <template>
   <div class="p-8 w-full">
     <h1 class="main-header">Get In Touch</h1>
@@ -44,13 +54,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import ContactFormComponent from './ContactFormComponent.vue';
-
-export default {
-  components: {
-    ContactFormComponent
-  }
-};
-</script>

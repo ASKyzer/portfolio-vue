@@ -9,18 +9,13 @@ export default {
   setup() {
     const { state, closeModal } = useModalStore(); // Import the modal store
     const buttonClickHandler = (type: String) => {
-      console.log('🚀 ~ buttonClickHandler ~ type:', type);
       if (type === 'primary') {
         state.buttonAction();
       } else {
         state.buttonActionSecondary();
       }
 
-      console.log('🚀 ~ buttonClickHandler ~ state.closeOnAction:', state.closeOnAction);
-      if (state.closeOnAction) {
-        console.log('🚀 ~ buttonClickHandler ~ closeModal');
-        closeModal();
-      }
+      if (state.closeOnAction) closeModal();
     };
 
     return {
