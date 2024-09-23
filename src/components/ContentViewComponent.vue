@@ -1,14 +1,18 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
+import LoadingThoughtBubbleComponent from './LoadingThoughtBubbleComponent.vue';
 
 export default defineComponent({
   name: 'ContentViewComponent',
   components: {
-    ButtonComponent
+    ButtonComponent,
+    LoadingThoughtBubbleComponent
   },
   setup() {
     const quote = ref(null);
+
+    const isLoading = ref(true);
 
     const getQuote = async () => {
       try {
@@ -18,6 +22,7 @@ export default defineComponent({
         }
         const data = await response.json();
         quote.value = data;
+        isLoading.value = false;
       } catch (error) {
         console.error('Error fetching quote:', error);
       }
@@ -30,7 +35,9 @@ export default defineComponent({
     return {
       quote,
       getQuote,
-      ButtonComponent
+      isLoading,
+      ButtonComponent,
+      LoadingThoughtBubbleComponent
     };
   }
 });
@@ -38,10 +45,13 @@ export default defineComponent({
 
 <template>
   <div class="p-1 lg:p-8 lg:mt-12">
-    <div class="flex p-6 italic space-x-4">
+    <div v-if="isLoading" class="flex justify-center mb-16">
+      <LoadingThoughtBubbleComponent />
+    </div>
+    <div v-else class="flex p-6 italic space-x-2">
       <span v-if="quote" class="text-primary text-5xl">"</span>
-      <h1 class="italic text-tertiary text-4xl">
-        {{ quote?.quote }}<span v-if="quote" class="text-primary text-5xl"> "</span>
+      <h1 class="italic text-tertiary text-4xl relative">
+        {{ quote?.quote }}<span v-if="quote" class="text-primary text-5xl absolute"> "</span>
       </h1>
     </div>
 
