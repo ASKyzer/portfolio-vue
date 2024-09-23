@@ -1,6 +1,6 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import AccordionComponent from './AccordionComponent.vue'
+import { defineComponent, ref } from 'vue';
+import AccordionComponent from './AccordionComponent.vue';
 
 export default defineComponent({
   components: {
@@ -40,13 +40,13 @@ export default defineComponent({
           'While primarily focused on hairstyling and client consultations, this role developed critical soft skills that directly translate to leadership and frontend development. Skills like attention to detail, client satisfaction, and creating personalized experiences parallel the needs of user-focused web development.'
         ]
       }
-    ])
+    ]);
 
     return {
       accordionItems
-    }
+    };
   }
-})
+});
 </script>
 
 <template>
