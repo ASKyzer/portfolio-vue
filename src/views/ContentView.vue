@@ -23,51 +23,13 @@ export default defineComponent({
 
 <template>
   <div class="min-h-screen">
-    <div class="navigation-panel">
+    <div class="h-full lg:w-[420px] lg:bg-transparent">
       <HeaderComponent />
     </div>
-
-    <div class="content-panel">
+    <div
+      class="w-auto min-h-[calc(100vh-80px)] bg-[var(--color-background)] p-3 overflow-y-auto lg:h-screen lg:p-16 lg:ml-[420px] lg:flex lg:justify-center lg:items-center xl:p-32"
+    >
       <router-view></router-view>
     </div>
   </div>
 </template>
-
-<style scoped>
-.navigation-panel {
-  height: 100%;
-}
-
-.content-panel {
-  width: auto;
-  min-height: calc(100vh - 80px);
-  background-color: var(--color-background);
-  padding: 0.75rem;
-  overflow-y: auto;
-}
-
-@media screen and (min-width: 1024px) {
-  .navigation-panel {
-    width: 420px;
-    background-color: transparent;
-  }
-
-  .content-panel {
-    width: auto;
-    height: 100vh;
-    background-color: var(--color-background);
-    padding: 4rem;
-    overflow-y: auto;
-    margin-left: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .content-panel {
-    padding: 8rem;
-  }
-}
-</style>

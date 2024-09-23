@@ -41,7 +41,7 @@ export default defineComponent({
     </div>
 
     <!-- Navigation menu -->
-    <nav class="navv" :class="{ opened: isMenuOpen }">
+    <nav class="navigation" :class="{ opened: isMenuOpen }">
       <router-link @click="handleNavItemClick" to="/" class="router-link navigation-item"
         >Home</router-link
       >
@@ -74,11 +74,11 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.navv {
+.navigation {
   display: none;
 }
 
-.navv.opened {
+.navigation.opened {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -125,7 +125,7 @@ export default defineComponent({
 }
 
 @media screen and (min-width: 1024px) {
-  .navv {
+  .navigation {
     display: flex;
     flex-direction: column;
     width: 420px;
