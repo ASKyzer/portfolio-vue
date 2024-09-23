@@ -1,5 +1,5 @@
 <script language="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   props: {
@@ -17,19 +17,18 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const activeIndex = ref(0)
+    const activeIndex = ref(0);
 
-    const toggleAccordion = (index) => {
-      activeIndex.value = activeIndex.value === index ? null : index
-    }
+    const toggleAccordion = (index) =>
+      (activeIndex.value = activeIndex.value === index ? null : index);
 
     return {
       activeIndex,
       toggleAccordion,
       props
-    }
+    };
   }
-})
+});
 </script>
 
 <template>
@@ -45,7 +44,7 @@ export default defineComponent({
           <h2>
             {{ item.title }}
           </h2>
-          <div class="text-primary">{{ activeIndex === index ? '-' : '+' }}</div>
+          <div class="text-primary scale-110">{{ activeIndex === index ? '-' : '+' }}</div>
         </div>
       </div>
       <div

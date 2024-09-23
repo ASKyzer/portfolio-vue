@@ -1,6 +1,5 @@
-
 <script lang="ts">
-import {getCurrentInstance} from "vue"
+import { getCurrentInstance } from 'vue';
 
 export default {
   name: 'InputField',
@@ -42,7 +41,7 @@ export default {
     return {
       inputValue: '',
       error: '',
-      isFocused: false,
+      isFocused: false
     };
   },
   computed: {
@@ -61,7 +60,7 @@ export default {
   methods: {
     updateValue(event: any) {
       const { value } = event.target;
-      
+
       this.$emit('update:modelValue', value);
     },
     validate() {
@@ -94,7 +93,10 @@ export default {
       :for="inputId"
       :class="[
         'absolute left-0 transition-all duration-300 ease-in-out cursor-text',
-        { 'top-4 input-placeholder': !inputValue && !isFocused, 'top-[-1rem] input-label text-xs': inputValue || isFocused }
+        {
+          'top-4 input-placeholder': !inputValue && !isFocused,
+          'top-[-1rem] input-label text-xs': inputValue || isFocused
+        }
       ]"
     >
       {{ label }}
@@ -110,8 +112,14 @@ export default {
       v-model="inputValue"
       @input="updateValue($event)"
       @focus="isFocused = true"
-      @blur="isFocused = false; validate()"
-      :class="['w-full py-2 px-2 border-b bg-transparent focus:outline-none focus:border-secondary input-text', { 'border-error' : error, 'border-tertiary': !error }]"
+      @blur="
+        isFocused = false;
+        validate();
+      "
+      :class="[
+        'w-full py-2 px-2 border-b bg-transparent focus:outline-none focus:border-secondary input-text',
+        { 'border-error': error, 'border-tertiary': !error }
+      ]"
     />
     <textarea
       v-else
@@ -124,7 +132,10 @@ export default {
       v-model="inputValue"
       @input="updateValue($event)"
       @focus="isFocused = true"
-      @blur="isFocused = false; validate()"
+      @blur="
+        isFocused = false;
+        validate();
+      "
       class="w-full py-2 px-2 border-b border-tertiary bg-transparent focus:outline-none focus:border-secondary input-text"
       :class="{ 'border-error': error }"
     ></textarea>
@@ -134,13 +145,14 @@ export default {
   </div>
 </template>
 
-
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-    transition: opacity 0.5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

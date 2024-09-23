@@ -1,24 +1,24 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import HeaderComponent from '@/components/HeaderComponent.vue'
+import { defineComponent, ref } from 'vue';
+import HeaderComponent from '@/components/HeaderComponent.vue';
 
 export default defineComponent({
   components: {
     HeaderComponent
   },
   setup() {
-    const isOpen = ref(false)
+    const isOpen = ref(false);
 
     const toggleMenu = () => {
-      isOpen.value = !isOpen.value
-    }
+      isOpen.value = !isOpen.value;
+    };
 
     return {
       isOpen,
       toggleMenu
-    }
+    };
   }
-})
+});
 </script>
 
 <template>

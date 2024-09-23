@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
@@ -16,13 +16,13 @@ export default defineComponent({
         title: 'University of Virginia',
         description: 'B.A., Biology/Biological Sciences (2000)'
       }
-    ])
+    ]);
 
     return {
       educationItems
-    }
+    };
   }
-})
+});
 </script>
 
 <template>
