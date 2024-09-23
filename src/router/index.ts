@@ -5,6 +5,7 @@ import AboutSection from '../components/AboutSection.vue';
 import ExperienceSection from '@/components/ExperienceSection.vue';
 import EducationSection from '@/components/EducationSection.vue';
 import ContactSection from '@/components/ContactSection.vue';
+import ContentViewComponent from '@/components/ContentViewComponent.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,6 +16,10 @@ const router = createRouter({
 
       component: ContentView,
       children: [
+        {
+          path: '',
+          component: ContentViewComponent
+        },
         {
           path: 'about',
           component: AboutSection
