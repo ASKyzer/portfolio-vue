@@ -1,10 +1,13 @@
 <!-- eslint-disable no-unreachable -->
 <script>
 import InputField from './InputField.vue';
+import { useModalStore } from '../store/useModalStore';
+import ButtonComponent from './ButtonComponent.vue';
 
 export default {
   components: {
-    InputField
+    InputField,
+    ButtonComponent
   },
   data() {
     return {
@@ -61,38 +64,46 @@ export default {
         // Submit the form to Netlify
         const form = this.$el.querySelector('form');
         const formData = new FormData(form);
+        const { openModal } = useModalStore();
 
         fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()
         })
-        .then((res) => {
-          if (res.status !== 200) { 
-            throw new Error('Form submission failed'); // Create custom modal to display error message
-            return;
-          }
+          .then((res) => {
+            if (res.status !== 200) {
+              openModal({
+                message:
+                  'Something went wrong with your submission. Please try again in a few moments.  If the problem persists, please reach out to me directly at adriankyzer@gmail.com',
+                title: 'Oops!',
+                buttonText: 'Close'
+              });
+              return;
+            }
 
-          // if (res.status === 200) {
-          //   alert('Form successfully submitted'); // Create custom modal to display success message
-          //   this.form = this.getInitialFormState();
-          //   this.clearInput = true;
-            
-          //   setTimeout(() => {
-          //     this.clearInput = false;
-          //   }, 0);
-          // }
-          form.submit();
-          this.form = this.getInitialFormState();
+            form.submit();
+
+            openModal({
+              message: 'Thank you for reaching out! I will get back to you soon.',
+              title: 'Success!',
+              buttonText: 'Close'
+            });
+
+            this.form = this.getInitialFormState();
             this.clearInput = true;
-            
+
             setTimeout(() => {
               this.clearInput = false;
             }, 0);
-          })          
+          })
           .catch((error) => alert(error));
       } else {
-        alert('The form is not valid. Please check the fields and try again.');
+        openModal({
+          message: 'The form is not valid. Please check the fields and try again.',
+          title: 'Something wwent wrong!',
+          buttonText: 'Close'
+        });
       }
     }
   }
@@ -106,16 +117,17 @@ export default {
       method="POST"
       data-netlify="true"
       name="contact"
+      netlify-honeypot="bot-field"
       class="mx-auto"
     >
-      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="form-name" value="contact" />
       <!-- Honeypot field to prevent spam -->
-      <div style="display:none;">
+      <div style="display: none">
         <label>
-          Don’t fill this out if you're human: 
+          Don’t fill this out if you're human:
           <input name="bot-field" v-model="form.botField" />
         </label>
-      </div>      
+      </div>
       <div class="md:flex md:space-x-4">
         <div class="md:flex-1">
           <InputField
@@ -147,7 +159,7 @@ export default {
           :validation="{ required: true, pattern: '.+@.+\\..+' }"
           required
           name="email"
-          />
+        />
       </div>
       <div class="mb-6">
         <InputField
@@ -157,25 +169,20 @@ export default {
           :validation="{ required: true }"
           required
           name="subject"
-          />
+        />
       </div>
       <div class="mb-6">
         <InputField
-           :clearInput="clearInput"
+          :clearInput="clearInput"
           type="textarea"
           label="Message"
           v-model="form.message"
           :validation="{ required: true }"
           required
           name="message"
-          />
+        />
       </div>
-      <button
-          type="submit"
-          class="text-primary py-2 px-8 transition duration-300 mb-8 text-[1.5rem] tracking-[1.5px] font-light  bg-primary filter hover:brightness-90 text-white rounded focus:outline-none focus:shadow-outline"
-        >
-          Submit
-        </button>    
-      </form>
+      <ButtonComponent text="Submit" type="submit" />
+    </form>
   </div>
 </template>

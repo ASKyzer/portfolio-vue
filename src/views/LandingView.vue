@@ -1,3 +1,17 @@
+<script type="module" lang="ts">
+import { defineComponent } from 'vue';
+import ButtonComponent from '@/components/ButtonComponent.vue';
+
+export default defineComponent({
+  components: {
+    ButtonComponent
+  },
+  setup() {
+    return ButtonComponent;
+  }
+});
+</script>
+
 <template>
   <div class="h-screen flex flex-col md:flex-row">
     <div class="md:w-1/2 bg-black text-white flex items-center justify-center p-8">
@@ -11,11 +25,7 @@
         <p class="lead text-[1.3rem] lg:text-[1.5rem]">AND ENGINEERING LEAD</p>
 
         <router-link to="/content/about">
-          <button
-            class="text-primary py-2 px-8 transition duration-300 mb-8 text-[1.5rem] tracking-[1.5px] font-light  bg-primary filter hover:brightness-90 text-white rounded focus:outline-none focus:shadow-outline"
-          >
-            Learn more about me!
-          </button>
+          <ButtonComponent text="Learn more about me!" />
         </router-link>
       </div>
     </div>
