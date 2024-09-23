@@ -82,8 +82,6 @@ export default {
               return;
             }
 
-            form.submit();
-
             openModal({
               message: 'Thank you for reaching out! I will get back to you soon.',
               title: 'Success!',
