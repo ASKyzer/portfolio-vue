@@ -23,16 +23,13 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="h-0">
+  <div class="">
     <!-- Button to toggle menu on mobile -->
-    <div
-      class="lg:hidden w-full h-20 bg-black fixed z-50 top-0 left-0 font-light whitespace-nowrap leading-none tracking-tight text-[4.5rem]"
-      :class="[isMenuOpen ? '' : '']"
-    >
+    <div class="menu-bar" :class="{ opened: isMenuOpen }">
       <span
         v-if="isMenuOpen"
         @click="toggleMenu"
-        class="pr-4 float-end cursor-pointer 'font-light uppercase text-[3rem]' w-auto"
+        class="pr-4 float-end cursor-pointer font-light uppercase text-[3rem] w-auto"
         >X</span
       >
       <span
@@ -44,15 +41,7 @@ export default defineComponent({
     </div>
 
     <!-- Navigation menu -->
-    <nav
-      :class="[
-        'space-y-6 text-center flex flex-col items-center justify-center',
-        'lg:relative lg:h-full lg:space-y-0 lg:flex-row ',
-        isMenuOpen
-          ? 'fixed inset-0 z-40 bg-black'
-          : 'hidden lg:flex lg:flex-col lg:items-center lg:justify-center'
-      ]"
-    >
+    <nav class="navigation" :class="{ opened: isMenuOpen }">
       <router-link @click="handleNavItemClick" to="/" class="router-link navigation-item"
         >Home</router-link
       >
@@ -85,6 +74,38 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.navigation {
+  display: none;
+}
+
+.navigation.opened {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.menu-bar {
+  z-index: 102;
+  color: white;
+  height: 80px;
+  width: 100%;
+}
+
+.menu-bar.opened {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .router-link:hover {
   scale: 1.025;
 }
@@ -101,5 +122,24 @@ export default defineComponent({
 
 .router-link:not(:first-of-type) {
   margin-top: 0 !important;
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .menu-bar {
+    display: none;
+  }
 }
 </style>

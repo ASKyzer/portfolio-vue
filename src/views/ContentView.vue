@@ -22,19 +22,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex flex-col lg:flex-row h-svh">
-    <div
-      class="w-full h-vls lg:h-auto lg:w-[700px] bg-black text-white lg:flex items-center justify-center p-8"
-    >
+  <div class="min-h-screen">
+    <div class="h-full lg:w-[420px] lg:bg-transparent">
       <HeaderComponent />
     </div>
-
     <div
-      class="w-full flex-grow bg-background flex items-start lg:items-center justify-center lg:just px-1 md:px-8 py-4 md:py-8 lg:px-24 xl:px-48"
+      class="w-auto min-h-[calc(100vh-80px)] bg-[var(--color-background)] p-3 overflow-y-auto lg:h-screen lg:p-16 lg:ml-[420px] lg:flex lg:justify-center lg:items-center xl:p-32"
     >
       <router-view></router-view>
     </div>
   </div>
 </template>
-
-<style scoped></style>

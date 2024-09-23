@@ -22,7 +22,7 @@ export default defineComponent({
         <p class="lead text-[1.3rem] lg:text-[1.5rem]">AND ENGINEERING LEAD</p>
 
         <router-link to="/content/about">
-          <ButtonComponent text="Learn more about me!" />
+          <ButtonComponent text="Learn more about me!" class="mb-4" />
         </router-link>
       </div>
     </div>
