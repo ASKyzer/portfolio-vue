@@ -2,6 +2,7 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 import LoadingThoughtBubbleComponent from './LoadingThoughtBubbleComponent.vue';
+import { fetchQuote } from '@/services/apiService';
 
 export default defineComponent({
   name: 'ContentViewComponent',
@@ -44,15 +45,9 @@ export default defineComponent({
       isLoading.value = true;
 
       try {
-        const response = await fetch(
-          `https://api.everxp.com/heading/quote?api_key=${import.meta.env.VITE_EVER_XP_API_KEY}&quote=${category.value}&lang=en`
-        );
+        const data = await fetchQuote(import.meta.env.VITE_EVER_XP_API_KEY, category.value);
+        console.log('🚀 ~ getQuote ~ response:', data);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
         const text = data.heading;
 
         if (text) {
@@ -66,11 +61,11 @@ export default defineComponent({
             quoteText,
             author
           };
-
-          isLoading.value = false;
         }
       } catch (error) {
         console.error('Error fetching quote:', error);
+      } finally {
+        isLoading.value = false;
       }
     };
 
