@@ -2,6 +2,7 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 import LoadingThoughtBubbleComponent from './LoadingThoughtBubbleComponent.vue';
+import { fetchQuote } from '@/services/apiService';
 
 export default defineComponent({
   name: 'ContentViewComponent',
@@ -41,17 +42,12 @@ export default defineComponent({
     const getQuote = async () => {
       const index = Math.floor(Math.random() * categories.value.length);
       category.value = categories.value[index];
+      isLoading.value = true;
 
       try {
-        const response = await fetch(
-          `https://api.everxp.com/heading/quote?api_key=${import.meta.env.VITE_EVER_XP_API_KEY}&quote=${category.value}&lang=en`
-        );
+        const data = await fetchQuote(import.meta.env.VITE_EVER_XP_API_KEY, category.value);
+        console.log('🚀 ~ getQuote ~ response:', data);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
         const text = data.heading;
 
         if (text) {
@@ -65,11 +61,11 @@ export default defineComponent({
             quoteText,
             author
           };
-
-          isLoading.value = false;
         }
       } catch (error) {
         console.error('Error fetching quote:', error);
+      } finally {
+        isLoading.value = false;
       }
     };
 
@@ -91,21 +87,21 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="p-1 lg:p-8 lg:mt-12">
+  <div class="p-0 lg:p-8 lg:mt-12">
     <div v-if="!isLoading" class="flex justify-center pb-4 pt-8 lg:pt-0">
       <p class="section-title">{{ category }}</p>
     </div>
-    <div v-if="isLoading" class="flex justify-center mb-16">
+    <div v-if="isLoading" class="flex justify-center my-16">
       <LoadingThoughtBubbleComponent />
     </div>
     <div v-else class="flex p-6 italic space-x-2">
       <span v-if="quote" class="text-primary text-5xl">"</span>
-      <h1 class="italic text-tertiary text-4xl relative">
+      <h1 class="italic text-tertiary text-3xl lg:text-4xl relative">
         {{ quote?.quoteText }}<span v-if="quote" class="text-primary text-5xl absolute"> "</span>
       </h1>
     </div>
     <p v-if="!isLoading" class="section-paragraph flex justify-end">- {{ quote?.author }}</p>
-    <div class="pt-12 flex justify-center">
+    <div class="pt-12 flex justify-center mb-6">
       <ButtonComponent @click="getQuote" text="Get Another Quote" theme="inverse" size="sm" />
     </div>
   </div>

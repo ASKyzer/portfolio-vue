@@ -2,6 +2,7 @@
 import InputField from './InputField.vue';
 import { useModalStore } from '../store/useModalStore';
 import ButtonComponent from './ButtonComponent.vue';
+import { submitForm } from '@/services/apiService';
 
 export default {
   components: {
@@ -48,51 +49,48 @@ export default {
 
       return isValid;
     },
-    handleSubmit() {
+    async handleSubmit() {
       if (this.form.botField) {
         // If the honeypot field is filled out, treat it as spam and do nothing
         return;
       }
 
+      const { openModal } = useModalStore();
+
       if (this.validateForm()) {
         // Submit the form to Netlify
         const form = this.$el.querySelector('form');
         const formData = new FormData(form);
-        const { openModal } = useModalStore();
 
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
-        })
-          .then((res) => {
-            if (res.status !== 200) {
-              openModal({
-                message:
-                  'Something went wrong with your submission. Please try again in a few moments.  If the problem persists, please reach out to me directly at adriankyzer@gmail.com',
-                title: 'Oops!',
-                buttonText: 'Close'
-              });
-              return;
-            }
-
+        try {
+          const res = await submitForm(formData);
+          if (res.status !== 200) {
             openModal({
-              message: 'Thank you for reaching out! I will get back to you soon.',
-              title: 'Success!',
+              message:
+                'Something went wrong with your submission. Please try again in a few moments. If the problem persists, please reach out to me directly at adriankyzer@gmail.com',
+              title: 'Oops!',
               buttonText: 'Close'
             });
+            return;
+          }
 
-            this.form = this.getInitialFormState();
-            this.clearInput = true;
+          openModal({
+            message: 'Thank you for reaching out! I will get back to you soon.',
+            title: 'Success!',
+            buttonText: 'Close'
+          });
 
-            setTimeout(() => {
-              this.clearInput = false;
-            }, 0);
-          })
-          .catch((error) => alert(error));
+          this.form = this.getInitialFormState();
+          this.clearInput = true;
+        } catch (error) {
+          openModal({
+            message:
+              'Something went wrong with your submission. Please try again in a few moments. If the problem persists, please reach out to me directly at adriankyzer@gmail.com',
+            title: 'Oops!',
+            buttonText: 'Close'
+          });
+        }
       } else {
-        const { openModal } = useModalStore();
-
         openModal({
           message: 'The form is not valid. Please check the fields and try again.',
           title: 'Oops!',

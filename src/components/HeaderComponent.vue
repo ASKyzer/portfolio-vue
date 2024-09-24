@@ -25,7 +25,7 @@ export default defineComponent({
 <template>
   <div class="">
     <!-- Button to toggle menu on mobile -->
-    <div class="menu-bar" :class="{ opened: isMenuOpen }">
+    <div class="menu-bar bg-black" :class="{ opened: isMenuOpen }">
       <span
         v-if="isMenuOpen"
         @click="toggleMenu"
@@ -98,9 +98,6 @@ export default defineComponent({
   color: white;
   height: 80px;
   width: 100%;
-}
-
-.menu-bar.opened {
   position: fixed;
   top: 0;
   left: 0;
@@ -131,6 +128,7 @@ export default defineComponent({
     width: 420px;
     justify-content: center;
     align-items: center;
+    background-color: #000;
     color: white;
     height: 100vh;
     position: fixed;
