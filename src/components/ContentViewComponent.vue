@@ -10,19 +10,64 @@ export default defineComponent({
     LoadingThoughtBubbleComponent
   },
   setup() {
-    const quote = ref(null);
+    const quote = ref<{ quoteText: string; author: string } | null>(null);
+    const categories = ref<string[]>([
+      'Alone',
+      'Attitude',
+      'Best Life',
+      'Fictional Characters',
+      'Friendship',
+      'Happiness',
+      'Inspirational',
+      'Leadership',
+      'Life',
+      'Love',
+      'Motivational',
+      'Nature',
+      'Reading',
+      'Relationship',
+      'Smile',
+      'Strength',
+      'Success',
+      'Time',
+      'Trust',
+      'Wisdom',
+      'Woman'
+    ]);
+    const category = ref<string>('Motivational');
 
     const isLoading = ref(true);
 
     const getQuote = async () => {
+      const index = Math.floor(Math.random() * categories.value.length);
+      category.value = categories.value[index];
+
       try {
-        const response = await fetch('https://dummyjson.com/quotes/random');
+        const response = await fetch(
+          `https://api.everxp.com/heading/quote?api_key=${import.meta.env.VITE_EVER_XP_API_KEY}&quote=${category.value}&lang=en`
+        );
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const data = await response.json();
-        quote.value = data;
-        isLoading.value = false;
+        const text = data.heading;
+
+        if (text) {
+          let quoteText, author;
+          const lastDashIndex = text.replace(/[–—]/g, '-').lastIndexOf('-');
+
+          quoteText = text.slice(0, lastDashIndex).trim().slice(1, -1);
+          author = text.slice(lastDashIndex + 1).trim();
+
+          quote.value = {
+            quoteText,
+            author
+          };
+
+          isLoading.value = false;
+        }
       } catch (error) {
         console.error('Error fetching quote:', error);
       }
@@ -35,6 +80,8 @@ export default defineComponent({
     return {
       quote,
       getQuote,
+      categories,
+      category,
       isLoading,
       ButtonComponent,
       LoadingThoughtBubbleComponent
@@ -45,17 +92,19 @@ export default defineComponent({
 
 <template>
   <div class="p-1 lg:p-8 lg:mt-12">
+    <div v-if="!isLoading" class="flex justify-center pb-4 pt-8 lg:pt-0">
+      <p class="section-title">{{ category }}</p>
+    </div>
     <div v-if="isLoading" class="flex justify-center mb-16">
       <LoadingThoughtBubbleComponent />
     </div>
     <div v-else class="flex p-6 italic space-x-2">
       <span v-if="quote" class="text-primary text-5xl">"</span>
       <h1 class="italic text-tertiary text-4xl relative">
-        {{ quote?.quote }}<span v-if="quote" class="text-primary text-5xl absolute"> "</span>
+        {{ quote?.quoteText }}<span v-if="quote" class="text-primary text-5xl absolute"> "</span>
       </h1>
     </div>
-
-    <p class="section-paragraph flex justify-end px-8">- {{ quote?.author }}</p>
+    <p v-if="!isLoading" class="section-paragraph flex justify-end px-8">- {{ quote?.author }}</p>
     <div class="pt-12 flex justify-center">
       <ButtonComponent @click="getQuote" text="Get Another Quote" theme="inverse" size="sm" />
     </div>
