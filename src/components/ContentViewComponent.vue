@@ -104,7 +104,7 @@ export default defineComponent({
         {{ quote?.quoteText }}<span v-if="quote" class="text-primary text-5xl absolute"> "</span>
       </h1>
     </div>
-    <p v-if="!isLoading" class="section-paragraph flex justify-end px-8">- {{ quote?.author }}</p>
+    <p v-if="!isLoading" class="section-paragraph flex justify-end">- {{ quote?.author }}</p>
     <div class="pt-12 flex justify-center">
       <ButtonComponent @click="getQuote" text="Get Another Quote" theme="inverse" size="sm" />
     </div>
