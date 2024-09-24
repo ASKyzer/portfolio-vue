@@ -27,7 +27,7 @@ export default defineComponent({
       <HeaderComponent />
     </div>
     <div
-      class="w-auto min-h-[calc(100vh-80px)] bg-[var(--color-background)] p-3 overflow-y-auto lg:h-screen lg:p-16 lg:ml-[420px] lg:flex lg:justify-center lg:items-center xl:p-32"
+      class="w-auto min-h-[calc(100vh-80px)] bg-[var(--color-background)] p-3 overflow-y-auto lg:h-full lg:p-16 lg:ml-[420px] lg:flex lg:justify-center lg:items-center xl:p-32"
     >
       <router-view></router-view>
     </div>
