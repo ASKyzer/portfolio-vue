@@ -128,6 +128,7 @@ export default defineComponent({
     width: 420px;
     justify-content: center;
     align-items: center;
+    background-color: #000;
     color: white;
     height: 100vh;
     position: fixed;
