@@ -65,6 +65,12 @@ export default defineComponent({
       >
       <router-link
         @click="handleNavItemClick"
+        to="/content/projects"
+        class="router-link navigation-item"
+        >Projects</router-link
+      >
+      <router-link
+        @click="handleNavItemClick"
         to="/content/contact"
         class="router-link navigation-item"
         >Contact</router-link

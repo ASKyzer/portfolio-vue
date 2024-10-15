@@ -1,11 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import LandingView from '@/views/LandingView.vue';
-import ContentView from '@/views/ContentView.vue';
-import AboutSection from '../components/AboutSection.vue';
-import ExperienceSection from '@/components/ExperienceSection.vue';
-import EducationSection from '@/components/EducationSection.vue';
+import AboutSection from '@/components/AboutSection.vue';
 import ContactSection from '@/components/ContactSection.vue';
 import ContentViewComponent from '@/components/ContentViewComponent.vue';
+import EducationSection from '@/components/EducationSection.vue';
+import ExperienceSection from '@/components/ExperienceSection.vue';
+import ProjectsSection from '@/components/ProjectsSection.vue';
+import ContentView from '@/views/ContentView.vue';
+import LandingView from '@/views/LandingView.vue';
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,6 +34,10 @@ const router = createRouter({
           component: EducationSection
         },
         {
+          path: 'projects',
+          component: ProjectsSection
+        },
+        {
           path: 'contact',
           component: ContactSection
         }
@@ -45,9 +50,8 @@ const router = createRouter({
   ]
 });
 
-// Global navigation guard to scroll to the top on each route change
 router.beforeEach((to, from, next) => {
-  window.scrollTo(0, 0); // Scrolls to the top on each navigation
+  window.scrollTo(0, 0);
   next();
 });
 
