@@ -38,7 +38,7 @@ export default defineComponent({
       </p>
       <div class="mb-8">
         <span class="section-subtitle mb-2">Built with:</span>
-        <div class="flex flex-wrap gap-2 mt-1">
+        <div class="flex flex-wrap gap-2 mt-2">
           <span
             v-for="tech in config.stack"
             :key="tech"
