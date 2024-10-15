@@ -35,7 +35,7 @@ export default {
 <template>
   <div class="p-8 w-full">
     <h1 class="main-header">What I've Built</h1>
-    <div class="mt-12">
+    <div class="mt-12" :class="projects.length > 2 ? 'mx-auto' : 'max-w-[1200px]'">
       <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
         <ProjectCardComponent v-for="project in projects" :key="project.name" :config="project" />
       </div>
