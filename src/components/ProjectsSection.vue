@@ -11,7 +11,6 @@ export default {
         name: 'Dynamic Forms',
         description:
           'This site demonstrates the power of building forms dynamically using a user-friendly interface. Our form builder allows you to create complex forms without writing a single line of code!',
-        imageUrl: '/src/assets/dynamic-forms.png',
         stack: ['Angular 18', 'Tailwind', 'TypeScript', 'RxJS'],
         projectUrl: 'https://dynamic-forms-builder.netlify.app/'
       },
@@ -19,8 +18,7 @@ export default {
         name: 'Ocean Tigers Dive House',
         description:
           'Ocean Tigers Dive House is a local dive shop in Cabo San Lucas, Mexico. I was responsible for the development of their new website which includes a redesign and payment system.',
-        imageUrl: '/src/assets/ocean-tigers.jpg',
-        stack: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Bootstrap', 'SEO'],
+        stack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'SEO'],
         projectUrl: 'https://oceantigers.com/'
       }
     ];
