@@ -1,8 +1,8 @@
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue';
+import { fetchQuote } from '@/services/apiService';
+import { defineComponent, onMounted, ref } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 import LoadingThoughtBubbleComponent from './LoadingThoughtBubbleComponent.vue';
-import { fetchQuote } from '@/services/apiService';
 
 export default defineComponent({
   name: 'ContentViewComponent',
